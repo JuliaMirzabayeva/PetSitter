@@ -8,6 +8,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jjp.petsitter.model.Animal
 import com.jjp.petsitter.ui.AnimalsLoader
 import kotlinx.coroutines.*
 
@@ -35,10 +36,17 @@ class MainActivity : AppCompatActivity() {
         loadAnimals()
     }
 
-    private fun loadAnimals() = runBlocking {
-       GlobalScope.launch(exceptionHandler) {
-           animalsLoader.loadAnimals()
+    private fun loadAnimals() = GlobalScope.launch(exceptionHandler) {
+        val animals = withContext(Dispatchers.Default) {
+            animalsLoader.loadAnimals()
         }
+        withContext(Dispatchers.Main) {
+            showSuccess(animals.animals)
+        }
+    }
+
+    private fun showSuccess(animals: List<Animal>) {
+        Toast.makeText(baseContext, "Successfully loaded ${animals.size} animals!", Toast.LENGTH_LONG).show()
     }
 
     private fun showError() {
