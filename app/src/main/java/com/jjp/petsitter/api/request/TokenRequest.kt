@@ -1,8 +1,9 @@
 package com.jjp.petsitter.api.request
 
-data class TokenRequest
-constructor(
-       val grant_type: String,
-       val client_id: String,
-       val client_secret: String
+import com.google.gson.annotations.SerializedName
+
+data class TokenRequest(
+       @SerializedName("grant_type") val grantType: String,
+       @SerializedName("client_id") val clientId: String,
+       @SerializedName("client_secret") val clientSecret: String
 )
