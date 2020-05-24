@@ -7,10 +7,10 @@ import com.jjp.petsitter.R
 
 class AnimalsAdapter
 constructor(
-    private val onItemClicked: ((AnimalVO) -> Unit)
+    private val onItemClicked: ((AnimalUiModel) -> Unit)
 ): RecyclerView.Adapter<AnimalsViewHolder>() {
 
-    private val items: MutableList<AnimalVO> = mutableListOf()
+    private val items: MutableList<AnimalUiModel> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimalsViewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -28,7 +28,7 @@ constructor(
         holder.bind(items[position])
     }
 
-    private fun AnimalsViewHolder.bind(item: AnimalVO) {
+    private fun AnimalsViewHolder.bind(item: AnimalUiModel) {
         setIcon(item.icon)
         setBreed(item.breed)
         setAddress(item.address)
@@ -36,7 +36,7 @@ constructor(
 
     override fun getItemCount(): Int = items.size
 
-    fun setItems(newItems: List<AnimalVO>) {
+    fun setItems(newItems: List<AnimalUiModel>) {
         items.clear()
         items.addAll(newItems)
         notifyDataSetChanged()

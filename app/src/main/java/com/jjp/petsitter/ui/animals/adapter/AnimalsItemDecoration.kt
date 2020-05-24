@@ -21,7 +21,7 @@ class AnimalsItemDecoration(
         super.getItemOffsets(outRect, view, parent, state)
 
         val position = parent.getChildAdapterPosition(view)
-        if (position != INCORRECT_POSITION) {
+        if (position != RecyclerView.NO_POSITION) {
             if (position == FIRST_POSITION) {
                 outRect.top = itemMargin
             }
@@ -30,7 +30,6 @@ class AnimalsItemDecoration(
     }
 
     companion object {
-        private const val INCORRECT_POSITION = -1
         private const val FIRST_POSITION = 0
     }
 }

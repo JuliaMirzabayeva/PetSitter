@@ -9,7 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjp.petsitter.R
-import com.jjp.petsitter.ui.animals.adapter.AnimalVO
+import com.jjp.petsitter.ui.animals.adapter.AnimalUiModel
 import com.jjp.petsitter.ui.animals.adapter.AnimalsAdapter
 import com.jjp.petsitter.ui.animals.adapter.AnimalsItemDecoration
 import kotlinx.android.synthetic.main.fragment_animals.*
@@ -20,7 +20,7 @@ class AnimalsFragment : Fragment() {
 
     private lateinit var animalsAdapter: AnimalsAdapter
 
-    private val animalsObserver = Observer<List<AnimalVO>> {animals ->
+    private val animalsObserver = Observer<List<AnimalUiModel>> { animals ->
         setAnimals(animals)
     }
 
@@ -49,11 +49,11 @@ class AnimalsFragment : Fragment() {
         animalsRecycler.adapter = animalsAdapter
     }
 
-    private fun onAnimalClicked(vo: AnimalVO) {
+    private fun onAnimalClicked(vo: AnimalUiModel) {
        // TODO show animal fragment
     }
 
-    private fun setAnimals(animals: List<AnimalVO>) {
+    private fun setAnimals(animals: List<AnimalUiModel>) {
         animalsAdapter.setItems(animals)
     }
 }

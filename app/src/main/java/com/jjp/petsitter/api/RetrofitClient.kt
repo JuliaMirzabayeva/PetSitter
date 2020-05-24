@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val BASE_URL = "https://api.petfinder.com"
+    private const val BASE_URL = "https://api.petfinder.com/v2/"
 
     val apiService: ApiService = getRetrofit().create(ApiService::class.java)
 

@@ -6,16 +6,16 @@ import com.jjp.petsitter.model.Address
 import com.jjp.petsitter.model.Animal
 import com.jjp.petsitter.model.AnimalType
 import com.jjp.petsitter.model.Breeds
-import com.jjp.petsitter.ui.animals.adapter.AnimalVO
+import com.jjp.petsitter.ui.animals.adapter.AnimalUiModel
 
 object AnimalsMapper {
 
-    fun mapAnimals(animals: List<Animal>): List<AnimalVO> {
+    fun mapAnimals(animals: List<Animal>): List<AnimalUiModel> {
         return animals.map(this::mapAnimal)
     }
 
-    private fun mapAnimal(animal: Animal): AnimalVO {
-        return AnimalVO(
+    private fun mapAnimal(animal: Animal): AnimalUiModel {
+        return AnimalUiModel(
             icon = getIcon(animal.type),
             breed = getBreed(animal.breeds),
             address = getAddress(animal.contact.address)
