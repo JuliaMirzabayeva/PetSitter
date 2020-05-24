@@ -1,12 +1,12 @@
-package com.jjp.petsitter.ui.animals
+package com.jjp.petsitter.animals.ui
 
 import androidx.annotation.DrawableRes
 import com.jjp.petsitter.R
-import com.jjp.petsitter.model.Address
-import com.jjp.petsitter.model.Animal
-import com.jjp.petsitter.model.AnimalType
-import com.jjp.petsitter.model.Breeds
-import com.jjp.petsitter.ui.animals.adapter.AnimalUiModel
+import com.jjp.petsitter.animals.data.Address
+import com.jjp.petsitter.animals.data.Animal
+import com.jjp.petsitter.animals.data.AnimalType
+import com.jjp.petsitter.animals.data.Breeds
+import com.jjp.petsitter.animals.ui.adapter.AnimalUiModel
 
 object AnimalsMapper {
 
@@ -18,7 +18,9 @@ object AnimalsMapper {
         return AnimalUiModel(
             icon = getIcon(animal.type),
             breed = getBreed(animal.breeds),
-            address = getAddress(animal.contact.address)
+            address = getAddress(
+                animal.contact.address
+            )
         )
     }
 

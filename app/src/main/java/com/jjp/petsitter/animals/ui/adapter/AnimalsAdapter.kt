@@ -1,4 +1,4 @@
-package com.jjp.petsitter.ui.animals.adapter
+package com.jjp.petsitter.animals.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

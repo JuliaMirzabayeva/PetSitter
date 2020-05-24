@@ -1,4 +1,4 @@
-package com.jjp.petsitter.ui.animals
+package com.jjp.petsitter.animals.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjp.petsitter.R
-import com.jjp.petsitter.ui.animals.adapter.AnimalUiModel
-import com.jjp.petsitter.ui.animals.adapter.AnimalsAdapter
-import com.jjp.petsitter.ui.animals.adapter.AnimalsItemDecoration
+import com.jjp.petsitter.animals.ui.adapter.AnimalUiModel
+import com.jjp.petsitter.animals.ui.adapter.AnimalsAdapter
+import com.jjp.petsitter.animals.ui.adapter.AnimalsItemDecoration
 import kotlinx.android.synthetic.main.fragment_animals.*
 
 class AnimalsFragment : Fragment() {
@@ -38,7 +38,7 @@ class AnimalsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initAdapter()
 
-        animalsViewModel.animalsVO.observe(viewLifecycleOwner, animalsObserver)
+        animalsViewModel.animals.observe(viewLifecycleOwner, animalsObserver)
         animalsViewModel.loadAnimals()
     }
 
@@ -49,7 +49,7 @@ class AnimalsFragment : Fragment() {
         animalsRecycler.adapter = animalsAdapter
     }
 
-    private fun onAnimalClicked(vo: AnimalUiModel) {
+    private fun onAnimalClicked(animal: AnimalUiModel) {
        // TODO show animal fragment
     }
 

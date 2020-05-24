@@ -1,4 +1,4 @@
-package com.jjp.petsitter.api
+package com.jjp.petsitter.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,7 +9,8 @@ object RetrofitClient {
 
     private const val BASE_URL = "https://api.petfinder.com/v2/"
 
-    val apiService: ApiService = getRetrofit().create(ApiService::class.java)
+    val apiService: ApiService = getRetrofit()
+        .create(ApiService::class.java)
 
     private fun getRetrofit(): Retrofit {
         val interceptor = HttpLoggingInterceptor()

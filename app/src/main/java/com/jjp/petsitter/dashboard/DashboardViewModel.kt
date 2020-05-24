@@ -1,4 +1,4 @@
-package com.jjp.petsitter.ui.dashboard
+package com.jjp.petsitter.dashboard
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

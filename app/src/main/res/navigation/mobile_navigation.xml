@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.jjp.petsitter.ui.animals.AnimalsFragment"
-        android:label="@string/title_home"
+        android:name="com.jjp.petsitter.animals.ui.AnimalsFragment"
+        android:label="@string/title_animals"
         tools:layout="@layout/fragment_animals" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.jjp.petsitter.ui.dashboard.DashboardFragment"
+        android:name="com.jjp.petsitter.dashboard.DashboardFragment"
         android:label="@string/title_dashboard"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.jjp.petsitter.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.jjp.petsitter.profile.ui.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

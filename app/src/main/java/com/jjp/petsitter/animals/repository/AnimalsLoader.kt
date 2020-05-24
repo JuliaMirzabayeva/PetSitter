@@ -1,9 +1,9 @@
-package com.jjp.petsitter.ui.animals
+package com.jjp.petsitter.animals.repository
 
-import com.jjp.petsitter.api.RetrofitClient
-import com.jjp.petsitter.api.request.TokenRequest
-import com.jjp.petsitter.model.Animals
-import com.jjp.petsitter.model.Token
+import com.jjp.petsitter.animals.data.Animals
+import com.jjp.petsitter.network.RetrofitClient
+import com.jjp.petsitter.animals.data.TokenRequest
+import com.jjp.petsitter.animals.data.Token
 import retrofit2.await
 
 class AnimalsLoader {
@@ -18,7 +18,11 @@ class AnimalsLoader {
     }
 
      private suspend fun loadToken(): Token {
-         val tokenRequest = TokenRequest(GRANT_TYPE, CLIENT_ID, CLIENT_SECRET)
+         val tokenRequest = TokenRequest(
+             GRANT_TYPE,
+             CLIENT_ID,
+             CLIENT_SECRET
+         )
          return apiService
              .getToken(tokenRequest)
              .await()

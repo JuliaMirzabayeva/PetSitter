@@ -1,8 +1,8 @@
-package com.jjp.petsitter.api
+package com.jjp.petsitter.network
 
-import com.jjp.petsitter.model.Token
-import com.jjp.petsitter.api.request.TokenRequest
-import com.jjp.petsitter.model.Animals
+import com.jjp.petsitter.animals.data.Token
+import com.jjp.petsitter.animals.data.TokenRequest
+import com.jjp.petsitter.animals.data.Animals
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

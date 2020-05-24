@@ -1,21 +1,23 @@
-package com.jjp.petsitter.ui.animals
+package com.jjp.petsitter.animals.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.jjp.petsitter.ui.animals.adapter.AnimalUiModel
+import com.jjp.petsitter.animals.repository.AnimalsLoader
+import com.jjp.petsitter.animals.ui.adapter.AnimalUiModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
 
 class AnimalsViewModel : ViewModel() {
 
-    private val animalsLoader = AnimalsLoader()
+    private val animalsLoader =
+        AnimalsLoader()
 
-    private val _animalsVO = MutableLiveData<List<AnimalUiModel>>()
+    private val _animals = MutableLiveData<List<AnimalUiModel>>()
 
-    val animalsVO: LiveData<List<AnimalUiModel>>
-        get() = _animalsVO
+    val animals: LiveData<List<AnimalUiModel>>
+        get() = _animals
 
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
         println(exception)
@@ -23,6 +25,10 @@ class AnimalsViewModel : ViewModel() {
 
     fun loadAnimals() = viewModelScope.launch(exceptionHandler) {
         val response = animalsLoader.loadAnimals()
-        _animalsVO.postValue(AnimalsMapper.mapAnimals(response.animals))
+        _animals.postValue(
+            AnimalsMapper.mapAnimals(
+                response.animals
+            )
+        )
     }
 }

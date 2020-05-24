@@ -1,4 +1,4 @@
-package com.jjp.petsitter.model
+package com.jjp.petsitter.animals.data
 
 import com.google.gson.annotations.SerializedName
 
