@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.jjp.petsitter.ui.home.HomeFragment"
+        android:name="com.jjp.petsitter.ui.animals.AnimalsFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_animals" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
