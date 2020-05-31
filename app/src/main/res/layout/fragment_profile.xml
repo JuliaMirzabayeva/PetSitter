@@ -17,6 +17,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center_horizontal"
+                android:background="@drawable/background_oval"
                 tools:src="@tools:sample/avatars" />
 
         <com.google.android.material.textfield.TextInputLayout

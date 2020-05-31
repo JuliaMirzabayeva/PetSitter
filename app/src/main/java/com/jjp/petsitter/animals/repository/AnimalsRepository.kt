@@ -6,7 +6,7 @@ import com.jjp.petsitter.animals.data.TokenRequest
 import com.jjp.petsitter.animals.data.Token
 import retrofit2.await
 
-class AnimalsLoader {
+class AnimalsRepository {
 
     private val apiService = RetrofitClient.apiService
 

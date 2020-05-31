@@ -1,25 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mobile_navigation"
+        app:startDestination="@+id/navigation_animals">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.jjp.petsitter.animals.ui.AnimalsFragment"
-        android:label="@string/title_animals"
-        tools:layout="@layout/fragment_animals" />
+            android:id="@+id/navigation_animals"
+            android:name="com.jjp.petsitter.animals.ui.list.AnimalsFragment"
+            android:label="@string/title_animals"
+            tools:layout="@layout/fragment_animals">
+        <action
+                android:id="@+id/navigation_from_animals_to_animal"
+                app:destination="@id/navigation_animal" />
+    </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.jjp.petsitter.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+            android:id="@+id/navigation_dashboard"
+            android:name="com.jjp.petsitter.dashboard.DashboardFragment"
+            android:label="@string/title_dashboard"
+            tools:layout="@layout/fragment_dashboard" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.jjp.petsitter.profile.ui.ProfileFragment"
-        android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+            android:id="@+id/navigation_profile"
+            android:name="com.jjp.petsitter.profile.ui.ProfileFragment"
+            android:label="@string/title_profile"
+            tools:layout="@layout/fragment_profile" />
+
+    <fragment
+            android:id="@+id/navigation_animal"
+            android:name="com.jjp.petsitter.animals.ui.description.AnimalFragment"
+            android:label="@string/title_animal"
+            tools:layout="@layout/fragment_animal" >
+        <argument
+                android:name="AnimalId"
+                app:argType="long"
+                android:defaultValue="0L" />
+    </fragment>
 </navigation>

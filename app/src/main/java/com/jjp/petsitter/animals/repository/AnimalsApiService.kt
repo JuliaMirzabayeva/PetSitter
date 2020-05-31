@@ -1,4 +1,4 @@
-package com.jjp.petsitter.network
+package com.jjp.petsitter.animals.repository
 
 import com.jjp.petsitter.animals.data.Token
 import com.jjp.petsitter.animals.data.TokenRequest
@@ -9,7 +9,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-interface ApiService {
+interface AnimalsApiService {
     @POST("oauth2/token")
     fun getToken(@Body request: TokenRequest): Call<Token>
 

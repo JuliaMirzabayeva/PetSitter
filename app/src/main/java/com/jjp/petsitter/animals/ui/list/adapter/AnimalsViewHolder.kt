@@ -1,4 +1,4 @@
-package com.jjp.petsitter.animals.ui.adapter
+package com.jjp.petsitter.animals.ui.list.adapter
 
 import android.view.View
 import androidx.annotation.DrawableRes
