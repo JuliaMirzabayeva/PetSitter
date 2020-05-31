@@ -1,14 +1,18 @@
 package com.jjp.petsitter.animals.repository
 
+import com.jjp.petsitter.animals.data.Animal
 import com.jjp.petsitter.animals.data.Animals
-import com.jjp.petsitter.network.RetrofitClient
 import com.jjp.petsitter.animals.data.TokenRequest
 import com.jjp.petsitter.animals.data.Token
 import retrofit2.await
 
-class AnimalsRepository {
+class AnimalsRepository
+constructor(
+    private val apiService: AnimalsApiService
+) {
 
-    private val apiService = RetrofitClient.apiService
+    var animals: List<Animal> = emptyList()
+        private set
 
     suspend fun loadAnimals(): Animals {
         val token = loadToken()
@@ -17,15 +21,15 @@ class AnimalsRepository {
             .await()
     }
 
-     private suspend fun loadToken(): Token {
-         val tokenRequest = TokenRequest(
-             GRANT_TYPE,
-             CLIENT_ID,
-             CLIENT_SECRET
-         )
-         return apiService
-             .getToken(tokenRequest)
-             .await()
+    private suspend fun loadToken(): Token {
+        val tokenRequest = TokenRequest(
+            GRANT_TYPE,
+            CLIENT_ID,
+            CLIENT_SECRET
+        )
+        return apiService
+            .getToken(tokenRequest)
+            .await()
     }
 
     companion object {

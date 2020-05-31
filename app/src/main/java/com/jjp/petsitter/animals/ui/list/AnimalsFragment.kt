@@ -10,10 +10,13 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjp.petsitter.R
+import com.jjp.petsitter.animals.dagger.AnimalsComponent
+import com.jjp.petsitter.animals.ui.description.AnimalDescriptionFragment
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalUiModel
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalsAdapter
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalsItemDecoration
 import kotlinx.android.synthetic.main.fragment_animals.*
+import javax.inject.Inject
 
 class AnimalsFragment : Fragment() {
 
@@ -51,7 +54,10 @@ class AnimalsFragment : Fragment() {
     }
 
     private fun onAnimalClicked(animal: AnimalUiModel) {
-        view?.findNavController()?.navigate(R.id.navigation_from_animals_to_animal)
+        val bundle = Bundle().apply {
+            putLong(AnimalDescriptionFragment.ANIMAL_ID_KEY, animal.id)
+        }
+        view?.findNavController()?.navigate(R.id.navigation_from_animals_to_animal, bundle)
     }
 
     private fun setAnimals(animals: List<AnimalUiModel>) {
