@@ -11,4 +11,6 @@
 
     <dimen name="text_size_headline">16dp</dimen>
     <dimen name="text_size_body">14dp</dimen>
+
+    <dimen name="button_progress_thickness">3dp</dimen>
 </resources>
