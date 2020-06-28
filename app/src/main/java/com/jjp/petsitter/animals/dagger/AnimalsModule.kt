@@ -1,7 +1,9 @@
 package com.jjp.petsitter.animals.dagger
 
+import com.jjp.petsitter.FeatureScope
 import com.jjp.petsitter.animals.repository.AnimalsApiService
 import com.jjp.petsitter.animals.repository.AnimalsRepository
+import com.jjp.petsitter.animals.repository.AnimalsRepositoryImpl
 import com.jjp.petsitter.animals.ui.description.AnimalDescriptionMapper
 import com.jjp.petsitter.animals.ui.description.AnimalDescriptionMapperImpl
 import com.jjp.petsitter.animals.ui.list.AnimalsMapper
@@ -25,7 +27,8 @@ abstract class AnimalsModule {
     }
 
     @Binds
-    abstract fun bindsAnimalsRepository(repository: AnimalsRepository): AnimalsRepository
+    @FeatureScope
+    abstract fun bindsAnimalsRepository(repository: AnimalsRepositoryImpl): AnimalsRepository
 
     @Binds
     abstract fun bindsAnimalsMapper(mapper: AnimalsMapperImpl): AnimalsMapper

@@ -7,12 +7,18 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.jjp.petsitter.animals.dagger.AnimalsComponent
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var animalsComponent: AnimalsComponent
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        animalsComponent = AnimalsComponent.create((application as App).getAppComponent())
+
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)

@@ -6,9 +6,10 @@ import com.jjp.petsitter.animals.ui.description.AnimalDescriptionFragment
 import com.jjp.petsitter.animals.ui.list.AnimalsFragment
 import dagger.Component
 
+
 @Component(
     dependencies = [AppComponent::class],
-    modules = [AnimalsModule::class]
+    modules = [AnimalsModule::class, AnimalsViewModelModule::class]
 )
 @FeatureScope
 interface AnimalsComponent {

@@ -1,6 +1,5 @@
 package com.jjp.petsitter.animals.ui.list
 
-import android.content.Context
 import androidx.annotation.DrawableRes
 import com.jjp.petsitter.R
 import com.jjp.petsitter.animals.data.Address
@@ -8,14 +7,10 @@ import com.jjp.petsitter.animals.data.Animal
 import com.jjp.petsitter.animals.data.AnimalType
 import com.jjp.petsitter.animals.data.Breeds
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalUiModel
+import javax.inject.Inject
 
 class AnimalsMapperImpl
-constructor(
-    context: Context
-): AnimalsMapper {
-
-    private val mixedBreed = context.getString(R.string.mixed)
-    private val unknownBreed = context.getString(R.string.unknown)
+@Inject constructor(): AnimalsMapper {
 
     override fun mapAnimals(animals: List<Animal>): List<AnimalUiModel> {
         return animals.map(this::mapAnimal)
@@ -46,8 +41,8 @@ constructor(
 
     private fun getBreed(breeds: Breeds): String {
         return when {
-            breeds.unknown -> unknownBreed
-            breeds.mixed -> MIXED_BREED_PATTERN.format(breeds.primary, mixedBreed)
+            breeds.unknown -> UNKNOWN_BREED
+            breeds.mixed -> MIXED_BREED_PATTERN.format(breeds.primary, breeds.secondary)
             else -> breeds.primary!!
         }
     }
@@ -57,7 +52,8 @@ constructor(
     }
 
     companion object {
-        private const val MIXED_BREED_PATTERN = "%s (%s)"
+        private const val MIXED_BREED_PATTERN = "%s + %s"
+        private const val UNKNOWN_BREED = "--"
         private const val ADDRESS_PATTERN = "%s %s"
     }
 }

@@ -28,7 +28,7 @@ class AnimalsViewModel
     fun loadAnimals() = viewModelScope.launch(exceptionHandler) {
         val response = animalsRepository.loadAnimals()
         _animals.postValue(
-            animalsMapper.mapAnimals(response.animals)
+            animalsMapper.mapAnimals(response)
         )
     }
 }

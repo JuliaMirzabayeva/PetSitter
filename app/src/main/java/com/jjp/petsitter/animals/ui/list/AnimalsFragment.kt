@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jjp.petsitter.App
 import com.jjp.petsitter.R
 import com.jjp.petsitter.animals.dagger.AnimalsComponent
 import com.jjp.petsitter.animals.ui.description.AnimalDescriptionFragment
@@ -20,6 +22,8 @@ import javax.inject.Inject
 
 class AnimalsFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var animalsViewModel: AnimalsViewModel
 
     private lateinit var animalsAdapter: AnimalsAdapter
@@ -33,8 +37,12 @@ class AnimalsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        AnimalsComponent
+            .create((requireActivity().application as App).getAppComponent())
+            .inject(this)
+
         animalsViewModel =
-                ViewModelProviders.of(this).get(AnimalsViewModel::class.java)
+            ViewModelProviders.of(this, viewModelFactory)[AnimalsViewModel::class.java]
         return inflater.inflate(R.layout.fragment_animals, container, false)
     }
 
