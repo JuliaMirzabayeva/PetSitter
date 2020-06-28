@@ -1,6 +1,5 @@
 package com.jjp.petsitter.animals.dagger
 
-import com.jjp.petsitter.FeatureScope
 import com.jjp.petsitter.animals.repository.AnimalsApiService
 import com.jjp.petsitter.animals.repository.AnimalsRepository
 import com.jjp.petsitter.animals.repository.AnimalsRepositoryImpl
@@ -21,13 +20,13 @@ abstract class AnimalsModule {
 
         @JvmStatic
         @Provides
-        fun provideMoviesApiService(retrofit: Retrofit): AnimalsApiService {
+        fun provideAnimalsApiService(retrofit: Retrofit): AnimalsApiService {
             return retrofit.create(AnimalsApiService::class.java)
         }
     }
 
     @Binds
-    @FeatureScope
+    @AnimalsScope
     abstract fun bindsAnimalsRepository(repository: AnimalsRepositoryImpl): AnimalsRepository
 
     @Binds

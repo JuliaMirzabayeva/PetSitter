@@ -10,8 +10,10 @@ interface AppComponent {
 
     companion object {
 
+        private var appComponent: AppComponent? = null
+
         fun create(): AppComponent {
-            return DaggerAppComponent.create()
+            return appComponent ?: DaggerAppComponent.create().also { appComponent = it }
         }
     }
 

@@ -16,12 +16,8 @@ class AnimalDescriptionMapperImpl
             id = animal.id,
             name = animal.name,
             icon = getIcon(animal.type),
-            breed = getBreed(
-                animal.breeds
-            ),
-            address = getAddress(
-                animal.contact.address
-            )
+            breed = getBreed(animal.breeds),
+            address = getAddress(animal.contact.address)
         )
     }
 
@@ -36,11 +32,7 @@ class AnimalDescriptionMapperImpl
     }
 
     private fun getBreed(breeds: Breeds): String {
-        return when {
-            breeds.unknown -> UNKNOWN_BREED
-            breeds.mixed -> MIXED_BREED_PATTERN.format(breeds.primary, breeds.secondary)
-            else -> breeds.primary!!
-        }
+        return if (breeds.unknown) UNKNOWN_BREED else breeds.primary!!
     }
 
     private fun getAddress(address: Address): String {
@@ -48,7 +40,6 @@ class AnimalDescriptionMapperImpl
     }
 
     companion object {
-        private const val MIXED_BREED_PATTERN = "%s + %s"
         private const val UNKNOWN_BREED = "--"
         private const val ADDRESS_PATTERN = "%s %s"
     }
