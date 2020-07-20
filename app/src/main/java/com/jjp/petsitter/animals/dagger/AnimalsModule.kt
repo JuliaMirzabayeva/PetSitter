@@ -15,10 +15,8 @@ import retrofit2.Retrofit
 @Module
 abstract class AnimalsModule {
 
-    @Module
     companion object {
 
-        @JvmStatic
         @Provides
         fun provideAnimalsApiService(retrofit: Retrofit): AnimalsApiService {
             return retrofit.create(AnimalsApiService::class.java)
