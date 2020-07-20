@@ -8,10 +8,13 @@ import com.jjp.petsitter.animals.repository.AnimalsRepository
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalUiModel
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AnimalsViewModel : ViewModel() {
-
-    private val animalsRepository = AnimalsRepository()
+class AnimalsViewModel
+@Inject constructor(
+    private val animalsRepository: AnimalsRepository,
+    private val animalsMapper: AnimalsMapper
+): ViewModel() {
 
     private val _animals = MutableLiveData<List<AnimalUiModel>>()
 
@@ -25,9 +28,7 @@ class AnimalsViewModel : ViewModel() {
     fun loadAnimals() = viewModelScope.launch(exceptionHandler) {
         val response = animalsRepository.loadAnimals()
         _animals.postValue(
-            AnimalsMapper.mapAnimals(
-                response.animals
-            )
+            animalsMapper.mapAnimals(response)
         )
     }
 }

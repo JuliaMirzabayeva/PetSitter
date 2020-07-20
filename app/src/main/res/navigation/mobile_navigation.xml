@@ -29,9 +29,9 @@
 
     <fragment
             android:id="@+id/navigation_animal"
-            android:name="com.jjp.petsitter.animals.ui.description.AnimalFragment"
+            android:name="com.jjp.petsitter.animals.ui.description.AnimalDescriptionFragment"
             android:label="@string/title_animal"
-            tools:layout="@layout/fragment_animal" >
+            tools:layout="@layout/fragment_animal_description" >
         <argument
                 android:name="AnimalId"
                 app:argType="long"

@@ -6,17 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.jjp.petsitter.App
 import com.jjp.petsitter.R
+import com.jjp.petsitter.animals.dagger.AnimalsComponent
+import com.jjp.petsitter.animals.ui.description.AnimalDescriptionFragment
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalUiModel
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalsAdapter
 import com.jjp.petsitter.animals.ui.list.adapter.AnimalsItemDecoration
 import kotlinx.android.synthetic.main.fragment_animals.*
+import javax.inject.Inject
 
 class AnimalsFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     private lateinit var animalsViewModel: AnimalsViewModel
 
     private lateinit var animalsAdapter: AnimalsAdapter
@@ -30,8 +37,12 @@ class AnimalsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        AnimalsComponent
+            .create((requireActivity().application as App).getAppComponent())
+            .inject(this)
+
         animalsViewModel =
-                ViewModelProviders.of(this).get(AnimalsViewModel::class.java)
+            ViewModelProviders.of(this, viewModelFactory)[AnimalsViewModel::class.java]
         return inflater.inflate(R.layout.fragment_animals, container, false)
     }
 
@@ -51,7 +62,10 @@ class AnimalsFragment : Fragment() {
     }
 
     private fun onAnimalClicked(animal: AnimalUiModel) {
-        view?.findNavController()?.navigate(R.id.navigation_from_animals_to_animal)
+        val bundle = Bundle().apply {
+            putLong(AnimalDescriptionFragment.ANIMAL_ID_KEY, animal.id)
+        }
+        view?.findNavController()?.navigate(R.id.navigation_from_animals_to_animal, bundle)
     }
 
     private fun setAnimals(animals: List<AnimalUiModel>) {
