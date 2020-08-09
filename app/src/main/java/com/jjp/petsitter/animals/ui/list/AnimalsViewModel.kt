@@ -12,8 +12,7 @@ import javax.inject.Inject
 
 class AnimalsViewModel
 @Inject constructor(
-    private val animalsRepository: AnimalsRepository,
-    private val animalsMapper: AnimalsMapper
+    private val animalsRepository: AnimalsRepository
 ): ViewModel() {
 
     private val _animals = MutableLiveData<List<AnimalUiModel>>()
@@ -28,7 +27,7 @@ class AnimalsViewModel
     fun loadAnimals() = viewModelScope.launch(exceptionHandler) {
         val response = animalsRepository.loadAnimals()
         _animals.postValue(
-            animalsMapper.mapAnimals(response)
+            AnimalsMapper.mapAnimals(response)
         )
     }
 }
