@@ -20,7 +20,13 @@ class AnimalsViewModel
     val animals: LiveData<List<AnimalUiModel>>
         get() = _animals
 
+    private val _error = MutableLiveData<String?>()
+
+    val error: LiveData<String?>
+        get() = _error
+
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
+        _error.postValue(exception.message)
         println(exception)
     }
 

@@ -12,6 +12,7 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
+import java.lang.RuntimeException
 
 @ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
@@ -29,6 +30,9 @@ class AnimalsViewModelTest {
     @Mock
     lateinit var animalsObserver: Observer<List<AnimalUiModel>>
 
+    @Mock
+    lateinit var errorObserver: Observer<String?>
+
     private lateinit var animalsViewModel: AnimalsViewModel
 
     @Test
@@ -43,6 +47,22 @@ class AnimalsViewModelTest {
 
             Mockito.verify(animalsRepository).loadAnimals()
             Mockito.verify(animalsObserver).onChanged(emptyList())
+        }
+    }
+
+    @Test
+    fun `show error after loading`() {
+        testCoroutineRule.runBlockingTest {
+            val errorMessage = "Timeout exception"
+            Mockito.`when`(animalsRepository.loadAnimals()).thenThrow(RuntimeException(errorMessage))
+
+            animalsViewModel = AnimalsViewModel(animalsRepository)
+            animalsViewModel.error.observeForever(errorObserver)
+
+            animalsViewModel.loadAnimals()
+
+            Mockito.verify(animalsRepository).loadAnimals()
+            Mockito.verify(errorObserver).onChanged(errorMessage)
         }
     }
 }
