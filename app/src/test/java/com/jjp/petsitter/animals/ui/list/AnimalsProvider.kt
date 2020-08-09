@@ -10,10 +10,6 @@ const val PRIMARY_BREED = "Primary"
 const val CITY = "City"
 const val COUNTRY = "Country"
 
-fun createAnimal(): Animal {
-    return createAnimal(type = "", primaryBreed = "")
-}
-
 fun createAnimal(type: String, primaryBreed: String?): Animal {
     return Animal(
         id = ANIMAL_ID,
