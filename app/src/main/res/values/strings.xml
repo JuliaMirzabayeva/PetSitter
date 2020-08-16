@@ -5,6 +5,8 @@
     <string name="title_profile">Profile</string>
     <string name="title_animal">Animal</string>
 
+    <string name="error">Error</string>
+
     <string name="mixed">Mixed</string>
     <string name="unknown">Unknown</string>
 

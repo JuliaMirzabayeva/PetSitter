@@ -5,8 +5,6 @@ import com.jjp.petsitter.animals.repository.AnimalsRepository
 import com.jjp.petsitter.animals.repository.AnimalsRepositoryImpl
 import com.jjp.petsitter.animals.ui.description.AnimalDescriptionMapper
 import com.jjp.petsitter.animals.ui.description.AnimalDescriptionMapperImpl
-import com.jjp.petsitter.animals.ui.list.AnimalsMapper
-import com.jjp.petsitter.animals.ui.list.AnimalsMapperImpl
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -26,9 +24,6 @@ abstract class AnimalsModule {
     @Binds
     @AnimalsScope
     abstract fun bindsAnimalsRepository(repository: AnimalsRepositoryImpl): AnimalsRepository
-
-    @Binds
-    abstract fun bindsAnimalsMapper(mapper: AnimalsMapperImpl): AnimalsMapper
 
     @Binds
     abstract fun bindsAnimalDescriptionMapper(mapper: AnimalDescriptionMapperImpl): AnimalDescriptionMapper
