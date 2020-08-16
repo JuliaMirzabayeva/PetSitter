@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -52,6 +53,13 @@ class AnimalDescriptionFragment : Fragment() {
     }
 
     companion object {
-        const val ANIMAL_ID_KEY = "id"
+        const val TAG = "animal_description_fragment"
+        private const val ANIMAL_ID_KEY = "id"
+
+        fun createNewInstance(animalId: Long): AnimalDescriptionFragment {
+            return AnimalDescriptionFragment().apply {
+                arguments = bundleOf(ANIMAL_ID_KEY to animalId)
+            }
+        }
     }
 }

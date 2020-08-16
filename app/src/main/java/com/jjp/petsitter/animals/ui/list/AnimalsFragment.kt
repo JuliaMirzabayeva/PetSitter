@@ -5,13 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.jjp.petsitter.App
+import com.jjp.petsitter.FragmentManipulator
 import com.jjp.petsitter.R
 import com.jjp.petsitter.animals.dagger.AnimalsComponent
 import com.jjp.petsitter.animals.ui.description.AnimalDescriptionFragment
@@ -30,6 +31,7 @@ class AnimalsFragment : Fragment() {
     private lateinit var animalsAdapter: AnimalsAdapter
 
     private val animalsObserver = Observer<List<AnimalUiModel>> { animals ->
+        animalsProgressBar.isVisible = false
         setAnimals(animals)
     }
 
@@ -68,10 +70,11 @@ class AnimalsFragment : Fragment() {
     }
 
     private fun onAnimalClicked(animal: AnimalUiModel) {
-        val bundle = Bundle().apply {
-            putLong(AnimalDescriptionFragment.ANIMAL_ID_KEY, animal.id)
-        }
-        view?.findNavController()?.navigate(R.id.navigation_from_animals_to_animal, bundle)
+        (activity as FragmentManipulator)
+            .addFragment(
+                AnimalDescriptionFragment.createNewInstance(animal.id),
+                AnimalDescriptionFragment.TAG
+            )
     }
 
     private fun setAnimals(animals: List<AnimalUiModel>) {
@@ -80,5 +83,9 @@ class AnimalsFragment : Fragment() {
 
     private fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
+    }
+
+    companion object {
+        const val TAG = "animals_fragment"
     }
 }

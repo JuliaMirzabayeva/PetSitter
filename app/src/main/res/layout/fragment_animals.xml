@@ -12,4 +12,12 @@
             android:layout_marginStart="@dimen/margin_m"
             android:layout_marginEnd="@dimen/margin_m"
             tools:listitem="@layout/adapter_item_animal" />
+
+    <ProgressBar
+            android:id="@+id/animalsProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:indeterminateTint="@color/colorGreyDark" />
 </FrameLayout>
