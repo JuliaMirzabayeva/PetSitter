@@ -46,6 +46,10 @@ class AnimalDescriptionFragment : Fragment() {
         if (savedInstanceState == null) {
             arguments?.getLong(ANIMAL_ID_KEY)?.let(animalDescriptionViewModel::setAnimal)
         }
+
+        animalToolbar.setNavigationOnClickListener {
+            requireActivity().onBackPressed()
+        }
     }
 
     private fun setAnimal(animal: AnimalDescriptionUiModel) {
