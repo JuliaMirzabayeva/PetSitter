@@ -82,14 +82,14 @@ class AnimalsMapperTest {
 
     @Test
     fun mapOtherAnimalBreedPrimary() {
-        val horse = createAnimal("Anything", PRIMARY_BREED)
-        val mappedHorse = AnimalUiModel(
+        val animal = createAnimal("Anything", PRIMARY_BREED)
+        val mappedAnimal = AnimalUiModel(
             id = ANIMAL_ID,
             icon = R.drawable.background_oval,
             breed = PRIMARY_BREED,
             address = "$CITY $COUNTRY"
         )
-        Assert.assertEquals(listOf(mappedHorse), AnimalsMapper.mapAnimals(listOf(horse)))
+        Assert.assertEquals(listOf(mappedAnimal), AnimalsMapper.mapAnimals(listOf(animal)))
     }
 
     @Test
