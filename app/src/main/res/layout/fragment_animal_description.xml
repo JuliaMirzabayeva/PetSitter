@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        xmlns:tools="http://schemas.android.com/tools"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:orientation="vertical"
-        android:background="@color/colorGrey">
+        android:background="@color/colorGrey"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/animalToolbar"
@@ -13,11 +14,43 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:elevation="0dp"
-            app:navigationIcon="@drawable/ic_back"/>
+            app:navigationIcon="@drawable/ic_back" />
+
+    <ImageView
+            android:id="@+id/animalIcon"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="@dimen/margin_l"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_dog" />
 
     <TextView
             android:id="@+id/animalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_m"
+            android:textAppearance="@style/HeadlineText"
+            tools:text="Boris" />
+
+    <TextView
+            android:id="@+id/animalDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            tools:text="Boris" />
+            android:layout_margin="@dimen/margin_m"
+            android:textAppearance="@style/BodyText"
+            tools:text="Very Good Dog" />
+
+    <Space
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+    <com.jjp.petsitter.ProgressButton
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_margin="@dimen/margin_m"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:text="@string/contact"
+            android:textAppearance="@style/HeadlineText" />
 </LinearLayout>

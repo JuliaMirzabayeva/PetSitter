@@ -9,4 +9,6 @@
 
     <string name="mixed">Mixed</string>
     <string name="unknown">Unknown</string>
+
+    <string name="contact">Contact</string>
 </resources>
