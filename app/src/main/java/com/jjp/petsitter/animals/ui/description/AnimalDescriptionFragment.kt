@@ -53,7 +53,9 @@ class AnimalDescriptionFragment : Fragment() {
     }
 
     private fun setAnimal(animal: AnimalDescriptionUiModel) {
+        animalIcon.setImageResource(animal.icon)
         animalName.text = animal.name
+        animalDescription.text = animal.description
     }
 
     companion object {

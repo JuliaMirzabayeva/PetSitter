@@ -94,14 +94,14 @@ class AnimalsMapperTest {
 
     @Test
     fun mapOtherAnimalBreedUnknown() {
-        val horse = createAnimal("Anything", null)
-        val mappedHorse = AnimalUiModel(
+        val animal = createAnimal("Anything", null)
+        val mappedAnimal = AnimalUiModel(
             id = ANIMAL_ID,
             icon = R.drawable.background_oval,
             breed = "--",
             address = "$CITY $COUNTRY"
         )
-        Assert.assertEquals(listOf(mappedHorse), AnimalsMapper.mapAnimals(listOf(horse)))
+        Assert.assertEquals(listOf(mappedAnimal), AnimalsMapper.mapAnimals(listOf(animal)))
     }
 
     @Test(expected = NullPointerException::class)

@@ -11,7 +11,7 @@ data class Animal(
     @SerializedName("breeds") val breeds: Breeds,
     @SerializedName("size") val size: String,
     @SerializedName("contact") val contact: Contact,
-    @SerializedName("description") val description: String,
+    @SerializedName("description") val description: String?,
     @SerializedName("published_at") val publishedAt: String,
     @SerializedName("distance") val distance: Double
 )

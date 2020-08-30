@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
+import androidx.annotation.VisibleForTesting
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -31,11 +31,12 @@ class AnimalsFragment : Fragment() {
     private lateinit var animalsAdapter: AnimalsAdapter
 
     private val animalsObserver = Observer<List<AnimalUiModel>> { animals ->
-        animalsProgressBar.isVisible = false
+        animalsProgressBar.visibility = View.GONE
         setAnimals(animals)
     }
 
     private val errorObserver = Observer<String?> { error ->
+        animalsProgressBar.visibility = View.GONE
         showError(error ?: getString(R.string.error))
     }
 
@@ -77,11 +78,13 @@ class AnimalsFragment : Fragment() {
             )
     }
 
-    private fun setAnimals(animals: List<AnimalUiModel>) {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun setAnimals(animals: List<AnimalUiModel>) {
         animalsAdapter.setItems(animals)
     }
 
-    private fun showError(message: String) {
+    @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+    fun showError(message: String) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     }
 

@@ -9,12 +9,13 @@ import com.jjp.petsitter.animals.data.Breeds
 import javax.inject.Inject
 
 class AnimalDescriptionMapperImpl
-@Inject constructor(): AnimalDescriptionMapper {
+@Inject constructor() : AnimalDescriptionMapper {
 
     override fun mapAnimal(animal: Animal): AnimalDescriptionUiModel {
         return AnimalDescriptionUiModel(
             id = animal.id,
             name = animal.name,
+            description = animal.description ?: "",
             icon = getIcon(animal.type),
             breed = getBreed(animal.breeds),
             address = getAddress(animal.contact.address)
