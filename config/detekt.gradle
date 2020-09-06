@@ -1,0 +1,15 @@
+detekt {
+    config = files("$rootDir/config/detekt-config.yml")
+    input = files("src/main/java")
+
+    reports {
+        xml {
+            enabled = true
+            destination = file("build/reports/detekt.xml")
+        }
+        html {
+            enabled = true
+            destination = file("${buildDir}/reports/detect/detect.html")
+        }
+    }
+}
