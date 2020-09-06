@@ -1,0 +1,18 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    compileOnly fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compileOnly "com.android.tools.lint:lint-api:27.0.1"
+    compileOnly "com.android.tools.lint:lint-checks:27.0.1"
+}
+
+jar {
+    manifest {
+        attributes("Lint-Registry-v2": "com.jjp.lint.IssueRegistry")
+    }
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

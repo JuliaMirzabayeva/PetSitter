@@ -1,5 +1,7 @@
 package com.jjp.petsitter.animals.ui.list
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -25,9 +27,10 @@ class AnimalsViewModel
     val error: LiveData<String?>
         get() = _error
 
+    @SuppressLint("AndroidLogDetector")
     private val exceptionHandler = CoroutineExceptionHandler { _, exception ->
         _error.postValue(exception.message)
-        println(exception)
+        Log.d("Lint example tag", "Lint example message")
     }
 
     fun loadAnimals() = viewModelScope.launch(exceptionHandler) {
