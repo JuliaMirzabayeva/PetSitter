@@ -8,5 +8,6 @@ data class AnimalDescriptionUiModel(
     val description: String,
     @DrawableRes val icon: Int,
     val breed: String,
-    val address: String
+    val address: String,
+    val email: String
 )

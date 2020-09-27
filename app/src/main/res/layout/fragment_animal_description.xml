@@ -25,10 +25,18 @@
             tools:src="@drawable/ic_dog" />
 
     <TextView
-            android:id="@+id/animalName"
+            android:id="@+id/animalBreed"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_m"
+            android:textAppearance="@style/HeadlineText"
+            tools:text="Boris" />
+
+    <TextView
+            android:id="@+id/animalName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_s"
             android:textAppearance="@style/HeadlineText"
             tools:text="Boris" />
 
@@ -46,6 +54,7 @@
             android:layout_weight="1" />
 
     <com.jjp.petsitter.ProgressButton
+            android:id="@+id/contactButton"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:layout_margin="@dimen/margin_m"
