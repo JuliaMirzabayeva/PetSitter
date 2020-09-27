@@ -18,7 +18,8 @@ class AnimalDescriptionMapperImpl
             description = animal.description ?: "",
             icon = getIcon(animal.type),
             breed = getBreed(animal.breeds),
-            address = getAddress(animal.contact.address)
+            address = getAddress(animal.contact.address),
+            email = animal.contact.email
         )
     }
 

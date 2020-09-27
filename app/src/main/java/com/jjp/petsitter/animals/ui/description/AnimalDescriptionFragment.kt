@@ -1,5 +1,6 @@
 package com.jjp.petsitter.animals.ui.description
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -50,6 +51,12 @@ class AnimalDescriptionFragment : Fragment() {
         animalToolbar.setNavigationOnClickListener {
             requireActivity().onBackPressed()
         }
+
+        contactButton.setOnClickListener {
+            animalDescriptionViewModel.animal.value?.let { animal ->
+                sendEmail(animal.email, animal.id)
+            }
+        }
     }
 
     private fun setAnimal(animal: AnimalDescriptionUiModel) {
@@ -57,6 +64,15 @@ class AnimalDescriptionFragment : Fragment() {
         animalBreed.text = animal.breed
         animalName.text = animal.name
         animalDescription.text = animal.description
+    }
+
+    private fun sendEmail(email: String, animalId: Long) {
+        val intent = Intent(Intent.ACTION_SEND)
+        intent.type = "text/plain"
+        intent.putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
+        intent.putExtra(Intent.EXTRA_SUBJECT, "Adoption of $animalId")
+
+        startActivity(intent)
     }
 
     companion object {
