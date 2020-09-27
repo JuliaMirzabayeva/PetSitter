@@ -19,7 +19,7 @@ class AnimalDescriptionMapperImpl
             icon = getIcon(animal.type),
             breed = getBreed(animal.breeds),
             address = getAddress(animal.contact.address),
-            email = animal.contact.email
+            email = animal.contact.email ?: DEFAULT_EMAIL
         )
     }
 
@@ -44,5 +44,6 @@ class AnimalDescriptionMapperImpl
     companion object {
         private const val UNKNOWN_BREED = "--"
         private const val ADDRESS_PATTERN = "%s %s"
+        private const val DEFAULT_EMAIL = "petsitter_support@gmail.com"
     }
 }
